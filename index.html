@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRM WEB</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('FONDO.png'); /* Cambia 'tu-imagen-de-fondo.jpg' por la ruta de tu imagen de fondo */
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8); /* Agregamos un fondo semi-transparente para que el contenido sea legible */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 36px; /* Tamaño de fuente */
+      color: #333; /* Color del texto */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Sombra de texto */
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #666;
+    }
+
+#radioPlayer {
+  width: 100%;
+  max-width: 400px; /* Establece el ancho máximo del reproductor */
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+    #playlist {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #playlist li {
+     background: linear-gradient(to right, #48d5df, #056683); 
+      border-radius: 5px;
+      margin-bottom: 5px;
+      padding: 5px;
+      display: inline-block;
+      margin-right: 5px;
+      transition: background-color 0.3s ease;
+      cursor: pointer;
+    }
+
+    #playlist li:hover {
+      background-color: #071b16;
+    }
+
+    #playlist li a {
+      text-decoration: none;
+      color: #93e79e;
+      font-weight: bold;
+      display: block;
+    }
+
+    #playlist li a:hover {
+      color: #007bff;
+    }
+
+    .contacto {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      text-decoration: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .contacto:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+    <a href="#" class="contacto" onclick="abrirFormulario()">AGREGA TU ESTACION</a>
+  <div class="container">
+    <h1>CRM WEB</h1>
+    <h2>SELECCIONA ESTACION </H2>
+    <audio id="radioPlayer" controls autoplay>
+      <source src="" type="audio/mpeg">
+      Tu navegador no soporta el elemento de audio.
+    </audio>
+   
+    <div id="nombreEstacion">
+        <p>Estás escuchando:</p>
+      </div>
+    <ul id="playlist">
+      <li onclick="cambiarEstacion('https://stream-55.zeno.fm/6x76u1fqb0hvv?zs=N5bhtzBoRZm-XsdFTLML_g', 'RADIO VIVA')">
+      <a href="#">
+        <img src="img/viva 98.5.png" alt="Logo de Radio Viva">
+        <span>RADIO VIVA</span>
+      </a>
+      <li onclick="cambiarEstacion('https://stream-152.zeno.fm/ktcsxx48vv8uv?zs=5v_XSuFJTj-3rNBVRfJ9gA', 'MEETING')">
+        <a href="#">
+            <img src="img/meeting.png" alt="Logo de meeting">
+            <span>MEETING</span>
+          </a>
+      <li onclick="cambiarEstacion('https://stream-176.zeno.fm/ezyg3g28fc9uv?zs', 'CONEXION TROPICAL')">
+        <a href="#">
+            <img src="img/conexion tropical.png" alt="Logo de conexion tropical">
+            <span>CONEXION TROPICAL</span>
+          </a>
+
+      <li onclick="cambiarEstacion('https://streaming01.shockmedia.com.ar/9078/stream', 'AMISTAD')">
+        <a href="#">
+            <img src="img/DF.JPEG" alt="Logo de AMISTAD">
+            <span>AMISTAD</span>
+      <li onclick="cambiarEstacion('http://162.254.201.210:9366', 'LA 13')">
+    
+      <a href="#">
+        <img src="img/la 13.png" alt="Logo de LA 13">
+        <span>LA 13</span>
+      </a>
+      <li onclick="cambiarEstacion('https://server.laradio.online/proxy/eduardo_medina?mp=/stream&1711489977146', 'BM RADIO')">
+        <a href="#">
+            <img src="img/DF.JPEG" alt="Logo de BM RADIO ">
+            <span>BM RADIO </span>
+          </a>
+      <li onclick="cambiarEstacion('https://alpha.radioplayer.com.ar:9278/radioautentica', 'AUTENTICA FM')">
+        <a href="#">
+        <img src="img/autentica.png" alt="Logo de autentica">
+        <span>AUTENTICA</span>
+      </a>
+      <li onclick="cambiarEstacion('https://stream-59.zeno.fm/vy6dn9ah65quv?zs=siPrN1acStWBVZLp9QWWmg', 'STUDIO RADIO LC')">
+        <a href="#">
+            <img src="img/df.JPEG" alt="Logo de STUDIO RADIO LC">
+            <span>STUDIO RADIO LC</span>
+          </a>
+      <li onclick="cambiarEstacion('https://stream-53.zeno.fm/6duz2xhvv38uv?zs=FHqROgtOTBCrt8Tj6pQS9w', 'CONEXION PRAISE')">
+        <a href="#">
+            <img src="img/PRAISE.png" alt="Logo de CONEXION PRAISE">
+            <span>CONEXION PRAISE</span>
+          </a>
+      <li onclick="cambiarEstacion('https://stream-47.zeno.fm/n7f3kz02hc9uv?zs=iN0tgSHdRzeLpHReovujrQ', 'GENESIS')">
+        <a href="#">
+            <img src="img/df.JPEG" alt="Logo de GENESIS">
+            <span>GENESIS</span>
+          </a> 
+      <li onclick="cambiarEstacion('https://stream.zeno.fm/nwt99c9c5qzuv', 'RADIO DEL ALFARERO')">
+        
+        <a href="#">
+            <img src="img/rda.png" alt="Logo de rda">
+            <span>RADIO DEL ALFARERO</span>
+          </a>
+      <li onclick="cambiarEstacion('https://stream-43.zeno.fm/n1d88zefzs8uv?zs=6_6MvpfvRF2dpUAH6aTlBw', 'CRISTO ES LA LUZ')">
+        <a href="#">
+            <img src="img/cll.png" alt="Logo de cll">
+            <span>CRISTO ES LA LUZ</span>
+          </a>
+      <li onclick="cambiarEstacion('http://stream.zeno.fm/kn4xrgw9dm0uv', 'LA 107.1')">
+      <a href="#">
+        <img src="img/DF.JPEG" alt="Logo de voces de LA 107.1">
+        <span>LA 107.1 </span>
+      </a>
+      <li onclick="cambiarEstacion('http://192.99.38.174:9326', '91.7 FM MOISES VILLE')">
+        <a href="#">
+            <img src="img/DF.JPEG" alt="Logo de voces de 91.7 FM MOISES VILLE">
+            <span>91.7 FM MOISES VILLE </span>
+          </a>
+      <li onclick="cambiarEstacion('http://stream.zeno.fm/dfhaw6k1gchvv', 'SHALOM RADIO')">
+      <a href="#">
+        <img src="img/DF.JPEG" alt="Logo de voces de SHALOM RADIO">
+        <span>SHALOM RADIO </span>
+      </a>
+      <li onclick="cambiarEstacion('https://s2.netradiofm.com:5126', 'RADIO EMANUEL')">
+     <a href="#">
+      <img src="img/DF.JPEG" alt="Logo de voces de RADIO EMANUEL">
+      <span>RADIO EMANUEL </span>
+    </a>
+      <li onclick="cambiarEstacion('http://stream.zeno.fm/fmppcr6a95quv', 'VOCES DE ARRAIJAN')">
+        <a href="#">
+            <img src="img/DF.JPEG" alt="Logo de voces de ARRAIJAN ">
+            <span>voces de ARRAIJAN </span>
+          </a>
+      <li onclick="cambiarEstacion('https://radiomusicatucuman.com.ar', 'RADIO MUSICA TUCUMÁN ')">
+        <a href="#">
+            <img src="img/TUCU.JPEG" alt="Logo de RADIO MUSICA TUCUMÁN ">
+            <span>RADIO MUSICA TUCUMÁN </span>
+          </a>
+          <li onclick="cambiarEstacion('https://subituradio.com:7014/stream', 'PRAISE FM  ')">
+            <a href="#">
+                <img src="img/DF.JPEG" alt="Logo de PRAISE FM  ">
+                <span>PRAISE FM  </span>
+              </a>
+        <li onclick="cambiarEstacion('http://stream.zeno.fm/9rjl0xaqjxhtv', 'Viva la radio online   ')">
+                <a href="#">
+                    <img src="img/DF.JPEG" alt="Logo de Viva la radio online  ">
+                    <span>Viva la radio online  </span>
+                  </a>
+               
+      <!-- Agrega más estaciones -->
+    </ul>
+   
+
+  <script src="script.js"></script>
+  <script>
+    function cambiarEstacion(url, nombreEstacion) {
+      var player = document.getElementById('radioPlayer');
+      player.src = url;
+      player.play();
+      mostrarNombreEstacion(nombreEstacion);
+    }
+
+    function mostrarNombreEstacion(nombreEstacion) {
+      var divNombreEstacion = document.getElementById('nombreEstacion');
+      divNombreEstacion.textContent = 'Estás escuchando: ' + nombreEstacion;
+    }
+
+    function abrirFormulario() {
+      // Reemplaza 'URL_DEL_FORMULARIO' con la URL real del formulario de contacto
+      var urlFormulario = 'https://forms.gle/Aj4WTcZ7iMbJx6bo7';
+      window.open(urlFormulario, '_blank');
+    }
+  </script>
+  <h6>creado por Saul F Tula</h6>
+</body>
+</html>
