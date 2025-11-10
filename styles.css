@@ -1,3 +1,18 @@
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0.7);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px 20px rgba(255, 82, 82, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 82, 82, 0);
+  }
+}
+
 @keyframes kenburns {
   0% {
     transform: scale(1) translate(0, 0);
@@ -205,22 +220,29 @@ h2 {
 
 /* Estilo del Botón Contacto */
 .contacto {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 10px 20px;
-  font-size: 16px;
+  position: fixed; /* Lo fija en la pantalla */
+  top: 20px;
+  left: 20px;
+  z-index: 100; /* Se asegura que esté por encima de otros elementos */
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
   text-decoration: none;
-  background-color: #28a745;
+  background-color: #ff5252; /* Un color rojo-coral llamativo */
   color: #fff;
-  border: none; /* Asegura que no tenga borde por defecto */
-  font-family: Arial, sans-serif; /* Hereda la fuente del body */
-  cursor: pointer; /* Muestra la manito al pasar el mouse */
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  border: none;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  animation: pulse 2s infinite; /* Aplicamos la animación de pulso */
 }
 
 .contacto:hover {
-  background-color: #218838;
+  background-color: #ff1744; /* Un rojo más intenso al pasar el mouse */
+  animation-play-state: paused; /* Pausamos la animación en hover para que no interfiera */
+  transform: scale(1.05); /* Agrandamos ligeramente el botón */
 }
 
 /* --- ESTILOS DEL FOOTER (MARCA DE AGUA) --- */
