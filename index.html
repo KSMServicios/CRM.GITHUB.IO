@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CRM WEB</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button id="addStationBtn" class="contacto">AGREGA TU ESTACION</button>
+    <div class="container">
+      <h1>CRM WEB</h1>
+      <h2>SELECCIONA ESTACION</h2>
+
+      <img id="logoEstacion" src="img/df.png" alt="Logo de Estación Actual" />
+
+      <audio id="radioPlayer" controls autoplay>
+        <source src="" type="audio/mpeg" />
+        Tu navegador no soporta el elemento de audio.
+      </audio>
+
+      <div id="nombreEstacion">
+        <p>Estás escuchando:</p>
+      </div>
+
+      <div class="carousel-wrapper">
+        <button id="scrollLeftBtn" class="arrow">‹</button>
+        <div class="carousel-container">
+          <div id="loadingIndicator">Cargando estaciones...</div>
+          <ul id="playlist">
+            <!-- La lista de estaciones se generará aquí dinámicamente -->
+          </ul>
+        </div>
+        <button id="scrollRightBtn" class="arrow">›</button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <img src="img/ksm.png" alt="KSM Servicios Logo" class="footer-logo" />
+      <p class="copyright">
+        &copy; 2025 KSM Servicios. Todos los derechos reservados.
+      </p>
+    </footer>
+
+    <!-- ===== CHATBOT ===== -->
+    <div class="chatbot-container">
+      <div id="chat-widget" class="chat-widget hidden">
+        <div class="chat-header">
+          <h5>Asistente KSM</h5>
+          <button
+            id="email-chat-btn"
+            class="email-chat-btn"
+            title="Enviar conversación por email"
+          >
+            ✉️
+          </button>
+          <button id="close-chat" class="close-chat-btn">&times;</button>
+        </div>
+        <div id="chat-body" class="chat-body">
+          <!-- Los mensajes del chat se generarán aquí -->
+        </div>
+        <div class="chat-footer">
+          <input
+            type="text"
+            id="chat-input"
+            placeholder="Escribe un mensaje..."
+          />
+          <button id="send-btn">Enviar</button>
+        </div>
+      </div>
+      <button id="chat-toggle-btn" class="chat-toggle-btn">
+        <img src="img/chatbot.png" alt="Abrir Chat" />
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

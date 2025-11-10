@@ -1,0 +1,463 @@
+@keyframes kenburns {
+  0% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 50% 50%;
+  }
+  50% {
+    transform: scale(1.15) translate(-2%, 2%);
+    transform-origin: top left;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    transform-origin: 50% 50%;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("img/fondo.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -1; /* Lo pone detrás de todo el contenido */
+  animation: kenburns 40s ease-in-out infinite;
+}
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 36px;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  margin-top: 0;
+  color: #666;
+}
+
+#radioPlayer {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo de Estación en el Reproductor */
+#logoEstacion {
+  width: 100px;
+  height: 100px;
+  margin: 10px 0;
+  border-radius: 5px;
+  object-fit: contain;
+  border: 1px solid #ccc;
+}
+
+/* --- ESTILOS DEL CARRUSEL --- */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.carousel-container {
+  flex-grow: 1;
+  overflow-x: hidden;
+  padding: 10px 0;
+}
+
+/* Flechas de control (tarjetas laterales) GRANDES */
+.arrow {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  /* Valores aumentados */
+  padding: 20px 15px;
+  font-size: 30px;
+  /* ALTURA AUMENTADA para la pasarela */
+  height: 250px;
+
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.arrow:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, 0.6); /* Evita que el hover afecte al color */
+}
+
+/* --- LISTA DE EMISORAS: ESTRUCTURA DE DOS FILAS (2xN) AJUSTADA --- */
+#playlist {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Cambiado para organizar en columnas */
+  flex-wrap: wrap; /* Mantenido para que se envuelva en múltiples columnas */
+  /* ALTURA AJUSTADA para coincidir con la flecha y contener 2 filas */
+  height: 250px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+
+  /* Ocultar barra de scroll nativa */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+#playlist::-webkit-scrollbar {
+  display: none;
+}
+
+#playlist li {
+  flex: 0 0 auto;
+  width: 200px;
+  /* ALTURA AJUSTADA para que dos LI quepan dentro de 140px */
+  height: 65px; /* Aumentado para dar espacio al logo más grande */
+
+  margin: 0 10px 10px 0;
+  background: linear-gradient(to right, #48d5df, #056683);
+  border-radius: 5px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#playlist li:hover {
+  background-color: #071b16;
+}
+
+#playlist .seleccionada {
+  background: linear-gradient(to right, #e74c3c, #c0392b);
+  box-shadow: 0 0 10px rgba(224, 60, 49, 0.8);
+  transform: scale(1.03);
+}
+
+#playlist .seleccionada a {
+  color: #ffffff;
+}
+
+#playlist li a {
+  text-decoration: none;
+  color: #93e79e;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+#playlist li img {
+  width: 50px; /* Tamaño del logo aumentado */
+  height: 50px; /* Tamaño del logo aumentado */
+  margin-right: 10px;
+  border-radius: 3px;
+  object-fit: contain;
+}
+
+/* Centrar el texto si no hay imagen */
+#playlist li a:has(> span:only-child) {
+  justify-content: center;
+}
+
+#playlist li a:hover {
+  color: #007bff;
+}
+
+/* Estilo del Botón Contacto */
+.contacto {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #28a745;
+  color: #fff;
+  border: none; /* Asegura que no tenga borde por defecto */
+  font-family: Arial, sans-serif; /* Hereda la fuente del body */
+  cursor: pointer; /* Muestra la manito al pasar el mouse */
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.contacto:hover {
+  background-color: #218838;
+}
+
+/* --- Footer --- */
+.site-footer {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
+
+.footer-logo {
+  width: 100px;
+  height: auto;
+  opacity: 0.8; /* Ligeramente transparente para no ser intrusivo */
+}
+
+.copyright {
+  font-size: 12px;
+  color: #f0f0f0; /* Color claro para buena visibilidad sobre el fondo */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Sombra para legibilidad */
+  margin: 5px 0 0 0;
+}
+
+/* --- Chatbot --- */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1001;
+  /* Animación de deslizamiento */
+  animation: slideInFromLeft 0.5s ease-out 1s forwards;
+  opacity: 0; /* Empieza invisible para la animación */
+}
+
+.chat-toggle-btn {
+  background-color: #ffffff; /* Cambiado a blanco */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 110px; /* Aumentado para el logo más grande */
+  height: 110px; /* Aumentado para el logo más grande */
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s;
+}
+
+.chat-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+.chat-toggle-btn img {
+  width: 100px; /* Tamaño del logo aumentado a 100px */
+  height: 100px; /* Tamaño del logo aumentado a 100px */
+  object-fit: contain;
+  border-radius: 50%; /* Mantiene la forma circular si la imagen no es cuadrada */
+}
+
+.chat-widget {
+  width: 320px;
+  max-height: 450px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: opacity 0.3s, transform 0.3s;
+  transform-origin: bottom left;
+}
+
+.chat-widget.hidden {
+  opacity: 0;
+  transform: scale(0);
+  pointer-events: none;
+}
+
+.chat-header {
+  background: linear-gradient(to right, #48d5df, #056683);
+  color: white;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header h5 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.close-chat-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.email-chat-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.chat-body {
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  background-color: #f4f7f9;
+}
+
+.bot-message,
+.user-message {
+  padding: 8px 12px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  max-width: 80%;
+  line-height: 1.4;
+}
+
+.bot-message {
+  background-color: #e9e9eb;
+  align-self: flex-start;
+}
+
+.user-message {
+  background-color: #007bff;
+  color: white;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.chat-footer {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+}
+
+.chat-footer input {
+  flex-grow: 1;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 8px 12px;
+  margin-right: 10px;
+}
+
+.chat-footer button {
+  background-color: #056683;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  cursor: pointer;
+}
+
+/* --- Estilos para botones de opciones del Chatbot --- */
+.options-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  justify-content: flex-start;
+}
+
+.option-btn {
+  background-color: #fff;
+  border: 1px solid #056683;
+  color: #056683;
+  padding: 8px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.option-btn:hover {
+  background-color: #056683;
+  color: #fff;
+}
+
+/* --- Estilos para el enlace de WhatsApp en el chat --- */
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #0056b3;
+  font-weight: bold;
+}
+
+.whatsapp-link img {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+}
+
+/* --- Animación de "Escribiendo..." --- */
+.typing-indicator {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  background-color: #e9e9eb;
+  border-radius: 18px;
+  margin-bottom: 10px;
+}
+
+.typing-indicator span {
+  height: 8px;
+  width: 8px;
+  background-color: #999;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 2px;
+  animation: bounce 1.2s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-of-type(2) {
+  animation-delay: -1s;
+}
+.typing-indicator span:nth-of-type(3) {
+  animation-delay: -0.8s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
