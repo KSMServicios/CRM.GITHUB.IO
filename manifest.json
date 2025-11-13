@@ -2,7 +2,10 @@
   "name": "CRM WEB Radio",
   "short_name": "CRM WEB",
   "description": "Escucha tus estaciones de radio favoritas en CRM WEB.",
-  "start_url": "/crm.github.io/index.html",
+  
+  // SOLUCIÓN FINAL: Ahora en minúsculas para coincidir con el repositorio renombrado.
+  "start_url": "/crm.github.io/index.html", 
+  
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#056683",
@@ -14,5 +17,4 @@
     }
   ]
 }
-
 
