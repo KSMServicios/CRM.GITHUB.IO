@@ -2,7 +2,7 @@
   "name": "CRM WEB Radio",
   "short_name": "CRM WEB",
   "description": "Escucha tus estaciones de radio favoritas en CRM WEB.",
-  "start_url": "/index.html",
+  "start_url": "https://ksmservicios.github.io/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#056683",
@@ -14,3 +14,4 @@
     }
   ]
 }
+
