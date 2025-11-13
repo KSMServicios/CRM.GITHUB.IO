@@ -1,0 +1,16 @@
+{
+  "name": "CRM WEB Radio",
+  "short_name": "CRM WEB",
+  "description": "Escucha tus estaciones de radio favoritas en CRM WEB.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#056683",
+  "icons": [
+    {
+      "src": "img/ksm.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,4 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // --- REGISTRO DEL SERVICE WORKER ---
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then((registration) => {
+        console.log("Service Worker registrado con éxito:", registration);
+      })
+      .catch((error) => {
+        console.log("Error al registrar el Service Worker:", error);
+      });
+  }
+
   // --- VARIABLES GLOBALES DEL SCRIPT ---
 
   // Elementos del Reproductor de Radio
@@ -106,4 +118,41 @@ document.addEventListener("DOMContentLoaded", function () {
   function abrirFormulario() {
     window.open("https://forms.gle/ygW3zJSpAdhyrupG9", "_blank");
   }
+
+  // --- LÓGICA PARA INSTALACIÓN DE PWA ---
+  let deferredPrompt;
+  const installPromptContainer = document.getElementById("pwa-install-prompt");
+  const installButton = document.getElementById("pwa-install-btn");
+  const closeButton = document.getElementById("pwa-close-btn");
+
+  window.addEventListener("beforeinstallprompt", (e) => {
+    // Prevenir que el mini-infobar aparezca en Chrome
+    e.preventDefault();
+    // Guardar el evento para que pueda ser disparado más tarde.
+    deferredPrompt = e;
+    // Mostrar nuestro cartel de instalación personalizado
+    installPromptContainer.style.display = "flex";
+    setTimeout(() => installPromptContainer.classList.add("show"), 10); // Pequeño delay para la transición
+  });
+
+  installButton.addEventListener("click", async () => {
+    // Ocultar nuestro cartel
+    installPromptContainer.classList.remove("show");
+
+    if (deferredPrompt) {
+      // Mostrar el prompt de instalación del navegador
+      deferredPrompt.prompt();
+      // Esperar a que el usuario responda al prompt
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      // Ya no podemos usar el evento, así que lo descartamos
+      deferredPrompt = null;
+    }
+  });
+
+  closeButton.addEventListener("click", () => {
+    installPromptContainer.classList.remove("show");
+    // Ocultar el contenedor después de la transición
+    setTimeout(() => (installPromptContainer.style.display = "none"), 300);
+  });
 });

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRM WEB</title>
     <link rel="stylesheet" href="styles.css" />
+    <!-- Enlace al Manifest de la PWA -->
+    <link rel="manifest" href="manifest.json" />
   </head>
   <body>
     <button id="addStationBtn" class="contacto">AGREGA TU ESTACION</button>
@@ -73,14 +75,17 @@
               </a>
             </li>
 
-             <li
+            <li
               data-url="https://stream.zeno.fm/rq4bj6d0nhftv"
               data-name="RADIO CRISTIANA AMOR ETERNO"
               role="button"
               tabindex="0"
             >
               <a href="#">
-                <img src="img/rca.png" alt="Logo de RADIO CRISTIANA AMOR ETERNO" />
+                <img
+                  src="img/rca.png"
+                  alt="Logo de RADIO CRISTIANA AMOR ETERNO"
+                />
                 <span>RADIO CRISTIANA AMOR ETERNO</span>
               </a>
             </li>
@@ -117,7 +122,7 @@
                 <span>AUTENTICA FM</span>
               </a>
             </li>
-              <li
+            <li
               data-url="https://dominicanstream.com/proxy/vivalaradio/;"
               data-name="VIVA LA RADIO"
               role="button"
@@ -128,7 +133,7 @@
                 <span>VIVA LA RADIO</span>
               </a>
             </li>
-          <li
+            <li
               data-url="https://streaming01.shockmedia.com.ar/8968/stream"
               data-name="21 12 Radio Online"
               role="button"
@@ -139,7 +144,7 @@
                 <span>21 12 Radio Online</span>
               </a>
             </li>
-             <li
+            <li
               data-url="https://stream.zeno.fm/fmppcr6a95quv"
               data-name="Radio Virtual Jireh"
               role="button"
@@ -150,7 +155,7 @@
                 <span> Radio Virtual Jireh</span>
               </a>
             </li>
-             <li
+            <li
               data-url="https://www.radiocentrosantiago.com.ar/p/6010/"
               data-name="RADIO CENTRO"
               role="button"
@@ -206,7 +211,7 @@
                 <span>NUEVA VIDA FM 103.5</span>
               </a>
             </li>
-            
+
             <li
               data-url="https://stream-47.zeno.fm/n7f3kz02hc9uv?zs=iN0tgSHdRzeLpHReovujrQ"
               data-name="GENESIS"
@@ -218,7 +223,7 @@
                 <span>GENESIS</span>
               </a>
             </li>
-             <li
+            <li
               data-url="https://solumedia.com/radios/6728/stream"
               data-name="ENIGMA FM 106.5 MHZ"
               role="button"
@@ -262,7 +267,7 @@
                 <span>RADIO MUSICA TUCUMÁN</span>
               </a>
             </li>
-             <li
+            <li
               data-url="https://fpsnew2.listen2myradio.com:2199/listen.php?ip=212.84.160.3&port=8464&type=s2&mount=1"
               data-name="Maranatha Radio TV "
               role="button"
@@ -273,7 +278,7 @@
                 <span>Maranatha Radio TV</span>
               </a>
             </li>
-            
+
             <li
               data-url="https://centova.servidoraweb.net:9091/stream"
               data-name="Zensor Radio"
@@ -309,17 +314,27 @@
       </p>
     </footer>
 
+    <!-- Cartel para instalar PWA -->
+    <div
+      id="pwa-install-prompt"
+      class="pwa-prompt-container"
+      style="display: none"
+    >
+      <div class="pwa-prompt">
+        <h2>¡Instala nuestra App!</h2>
+        <p>
+          Añade CRM WEB a tu pantalla de inicio para un acceso rápido y una
+          mejor experiencia.
+        </p>
+        <div class="pwa-prompt-buttons">
+          <button id="pwa-install-btn" class="pwa-install-button">
+            Instalar
+          </button>
+          <button id="pwa-close-btn" class="pwa-close-button">Ahora no</button>
+        </div>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
