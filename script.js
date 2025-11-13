@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Elementos del Reproductor de Radio
   const player = document.getElementById("radioPlayer");
-  const source = player.querySelector("source");
+  // ¡IMPORTANTE! Se elimina: const source = player.querySelector("source");
   const nombreEstacionDiv = document.getElementById("nombreEstacion");
   const logoEstacionImg = document.getElementById("logoEstacion");
   const playlist = document.getElementById("playlist");
@@ -25,17 +25,18 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentStationItem = null;
 
   function cambiarEstacion(url, nombre, listItem) {
-    // Cambiar la fuente del reproductor y cargarlo
-    source.src = url;
-    player.load();
+    // 1. Asignar directamente la URL al reproductor
+    // Esto es la forma más limpia y robusta para cambiar streams en JS.
+    player.src = url;
 
-    // Intentar reproducir la nueva estación
+    // 2. Intentar reproducir la nueva estación.
+    // player.play() llama a load() automáticamente.
     player.play().catch((error) => {
       console.error(
         "La reproducción automática fue bloqueada por el navegador:",
         error
       );
-      // Podrías mostrar un mensaje al usuario para que inicie la reproducción manualmente.
+      // Opcionalmente: Podrías mostrar un mensaje pidiendo al usuario que toque Play.
     });
 
     // Actualizar el nombre de la estación que se está escuchando
